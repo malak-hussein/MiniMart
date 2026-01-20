@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Product>
+@* - Malak Hussein Ahmed Mohamed - Fayoum University - Faculty of Computers and Artificial Intelligence -  Up to level 4 *@
+
+<h1 class="display-4 text-center bg-info text-white fw-bold py-3 rounded shadow border border-primary">
+    🛍️ Products Index
+</h1>
+<a asp-controller="Products" asp-action="GetCreateView" class="btn btn-success fw-bold mb-1">
+	Create New
+</a>
+@if (Model.Count() > 0)
+{
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>@Html.DisplayNameFor(product => product.Id)</th>
+				<th>@Html.DisplayNameFor(product => product.Name)</th>
+				<th>@Html.DisplayNameFor(product => product.Description)</th>
+				<th>@Html.DisplayNameFor(product => product.Price)</th>
+				<th>@Html.DisplayNameFor(product => product.ImageUrl)</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var product in Model)
+			{
+				<tr>
+					<td>@product.Id</td>
+					<td>@product.Name</td>
+					<td style="max-width: 300px; overflow:auto">@product.Description</td>
+					<td>@product.Price.ToString("C")</td>
+					<td style="max-width: 500px; overflow:auto">@product.ImageUrl</td>
+					<td>
+						<a asp-controller="Products" asp-action="GetDetailsView" asp-route-id="@product.Id" class="btn btn-success">
+							Details
+						</a>
+						<a asp-controller="Products" asp-action="GetEditView" asp-route-id="@product.Id" class="btn btn-primary">
+							Edit
+						</a>
+						<a asp-controller="Products" asp-action="GetDeleteView" asp-route-id="@product.Id" class="btn btn-danger">
+							Delete
+						</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+		<tfoot>
+			<tr>
+				<th colspan="3" style="text-align:right">Total</th>
+				<th colspan="2">@Model.Sum(emp => emp.Price)</th>
+			</tr>
+		</tfoot>
+	</table>
+}
+else
+{
+	<h1 class="alert alert-danger text-center">
+		There is no product.
+	</h1>
+}
+@* - Malak Hussein Ahmed Mohamed - Fayoum University - Faculty of Computers and Artificial Intelligence -  Up to level 4 *@
+<br />
+<hr />
+<br />
+@* - Malak Hussein Ahmed Mohamed - Fayoum University - Faculty of Computers and Artificial Intelligence -  Up to level 4 *@
+@foreach (var product in Model)
+{
+	<div class="card text-center mb-3" style="display: inline-block; width:18rem; height:500px">
+		<div class="card-header">@product.Name</div>
+		<div class="card-body" style="height: 400px">
+			<img src="@product.ImageUrl" alt="@product.Name" style="width: 200px; height: 250px; object-fit: cover" />
+			<h3>@product.Price.ToString("C")</h3>
+			<h6 class="mt-2">@product.Description</h6>
+			<p>@DateTime.Now.ToShortDateString()</p>
+		</div>
+		<div class="card-footer">@product.Price</div>
+	</div>
+}
+<br />
+@foreach (var product in Model)
+{
+	<div class="card text-center mb-3 bg-primary text-white" style="display: inline-block; width:18rem; height:500px">
+		<div class="card-header">@product.Name</div>
+		<div class="card-body" style="height: 400px">
+			<img src="@product.ImageUrl" alt="@product.Name" style="width: 200px; height: 250px; object-fit: cover" />
+			<h3>@product.Price.ToString("C")</h3>
+			<h6 class="mt-2">@product.Description</h6>
+			<p>@DateTime.Now.ToShortDateString()</p>
+		</div>
+		<div class="card-footer">@product.Price</div>
+	</div>
+}
+<br />
+@foreach (var product in Model)
+{
+	<div class="card text-center mb-3 bg-transparent border-success" style="display: inline-block; width:18rem; height:500px" >
+		<div class="card-header bg-transparent border-success">@product.Name</div>
+		<div class="card-body bg-transparent border-success" style="height: 400px">
+			<img src="@product.ImageUrl" alt="@product.Name" style="width: 200px; height: 250px; object-fit: cover"/>
+			<h3>@product.Price.ToString("C")</h3>
+			<h6 class="mt-2">@product.Description</h6>
+			<p>@DateTime.Now.ToShortDateString()</p>
+		</div>
+		<div class="card-footer bg-transparent border-success">@product.Price</div>
+	</div>
+}
+

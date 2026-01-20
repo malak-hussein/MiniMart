@@ -1,0 +1,24 @@
+﻿@model Product;
+@* - Malak Hussein Ahmed Mohamed - Fayoum University - Faculty of Computers and Artificial Intelligence -  Up to level 4 *@
+<h1 class="display-6 text-center bg-success text-white fw-bold py-3 rounded shadow border border-primary">
+    @Html.DisplayFor(product => product.Name) Product Details
+</h1>
+
+@* - Malak Hussein Ahmed Mohamed - Fayoum University - Faculty of Computers and Artificial Intelligence -  Up to level 4 *@
+<dl class="row">
+    <dt class="col-2">@Html.DisplayNameFor(product => product.Id)</dt>
+    <dd class="col-10">@Html.DisplayFor(product => product.Id)</dd>
+    <dt class="col-2">@Html.DisplayNameFor(product => product.Name)</dt>
+    <dd class="col-10">@Html.DisplayFor(product => product.Name)</dd>
+    <dt class="col-2">@Html.DisplayNameFor(product => product.Description)</dt>
+    <dd class="col-10">@Html.DisplayFor(product => product.Description)</dd>
+    <dt class="col-2">@Html.DisplayNameFor(product => product.Price)</dt>
+    <dd class="col-10">@Html.DisplayFor(product => product.Price)</dd>
+    <dt class="col-2">@Html.DisplayNameFor(product => product.ImageUrl)</dt>
+    <dd class="col-10">@Html.DisplayFor(product => product.ImageUrl)</dd>
+    <dt class="col-2">@Html.DisplayNameFor(product => product.CategoryId)</dt>
+    <dd class="col-10">@Html.DisplayFor(product => product.Category.Name)</dd>
+</dl>
+<a asp-controller="Products" asp-action="GetIndexView">
+    Back to List
+</a>

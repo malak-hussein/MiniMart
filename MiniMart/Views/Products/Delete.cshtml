@@ -1,0 +1,30 @@
+﻿@model Product;
+
+@* - Malak Hussein Ahmed Mohamed - Fayoum University - Faculty of Computers and Artificial Intelligence -  Up to level 4 *@
+<h1 class="alert alert-danger display-3 text-center py-1 rounded shadow border border-primary">
+    Are you sure you want to delete @Html.DisplayFor(product => product.Name) Product?
+</h1>
+
+<dl class="row">
+    <dt class="col-2">@Html.DisplayNameFor(product => product.Id)</dt>
+    <dd class="col-10">@Html.DisplayFor(product => product.Id)</dd>
+    <dt class="col-2">@Html.DisplayNameFor(product => product.Name)</dt>
+    <dd class="col-10">@Html.DisplayFor(product => product.Name)</dd>
+    <dt class="col-2">@Html.DisplayNameFor(product => product.Description)</dt>
+    <dd class="col-10">@Html.DisplayFor(product => product.Description)</dd>
+    <dt class="col-2">@Html.DisplayNameFor(product => product.Price)</dt>
+    <dd class="col-10">@Html.DisplayFor(product => product.Price)</dd>
+    <dt class="col-2">@Html.DisplayNameFor(product => product.ImageUrl)</dt>
+    <dd class="col-10">@Html.DisplayFor(product => product.ImageUrl)</dd>
+    <dt class="col-2">@Html.DisplayNameFor(product => product.CategoryId)</dt>
+    <dd class="col-10">@Html.DisplayFor(product => product.Category.Name)</dd>
+</dl>
+
+<form method="post" asp-controller="Products" asp-action="DeleteCurrent">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>
+
+<a asp-controller="Products" asp-action="GetIndexView">
+    Back to List
+</a>
